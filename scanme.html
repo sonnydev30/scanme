@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Love Letter</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, lavender, #e6ccff);
+      font-family: "Arial", sans-serif;
+      overflow: hidden; /* no scrollbars */
+      position: relative;
+    }
+
+    .love-box {
+      background: lavender;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(200, 150, 255, 0.8);
+      text-align: center;
+      max-width: 400px;
+      animation: glow 2s infinite alternate;
+      z-index: 2;
+      position: relative;
+    }
+
+    .love-box h1 {
+      color: #5a2d82;
+      font-size: 2rem;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .love-box p {
+      color: #666;
+      margin-top: 15px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .popup-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #5a2d82;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+    .popup-btn:hover {
+      background: #7a42b5;
+      box-shadow: 0 0 10px rgba(90,45,130,0.7);
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 20px rgba(200, 150, 255, 0.6); }
+      to   { box-shadow: 0 0 40px rgba(150, 100, 255, 1); }
+    }
+
+    /* Floating text */
+    .floating-text {
+      position: absolute;
+      bottom: 20px;
+      font-size: 14px;
+      color: #4B0082;
+      animation: floatUp 3s linear forwards;
+      opacity: 0.85;
+      z-index: 1;
+      font-weight: bold;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0); opacity: 0.95; }
+      100% { transform: translateY(-120vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="love-box">
+    <h1>I Love You🥰🤍</h1>
+    <p>
+      Good morning my pretty princess🥰🤍<br>
+      Take care okay? 🥰🤍 kumain ka sa tamang oras ah🥰🤍 wag ka papalipas ng gutom🥰🤍
+      Study well mommy, stay focus🤍🥰 and be happy okay? 🥰🤍 smile!🥰🤍
+      See you later mommy🥰🤍 You're the prettiest girl I've ever seen in my life🥰🤍
+      I love you so much mommy ko🥰🤍 */mwa! 🥰😘 Have a nice day mommy🥰🤍 Goodluck🥰🤍
+    </p>
+    <button class="popup-btn" onclick="goToIndex()">Open Me💜</button>
+  </div>
+
+  <script>
+    // Floating text
+    function createFloatingText() {
+      const text = document.createElement("div");
+      text.className = "floating-text";
+      text.innerText = "I love you";
+      document.body.appendChild(text);
+
+      const size = 12 + Math.random() * 8;
+      text.style.fontSize = size + "px";
+      const maxLeft = Math.max(0, window.innerWidth - text.offsetWidth - 10);
+      text.style.left = Math.random() * maxLeft + "px";
+
+      const duration = 2 + Math.random() * 1.5;
+      text.style.animationDuration = duration + "s";
+
+      setTimeout(() => text.remove(), duration * 1000 + 200);
+    }
+    setInterval(() => {
+      for (let i = 0; i < 2; i++) createFloatingText();
+    }, 300);
+
+    // Redirect function
+    function goToIndex() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
